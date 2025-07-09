@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <title>SMS Messages</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>SMS Messages</h1>
+    {% if not gammu_loaded %}
+    <p><em>Warning: Python Gammu module not found. SMS functions may be limited.</em></p>
+    {% endif %}
+    <table>
+        <tr><th>ID</th><th>Sender</th><th>Receiver</th><th>Text</th><th>Timestamp</th></tr>
+        {% for msg in messages %}
+        <tr>
+            <td>{{ msg.id }}</td>
+            <td>{{ msg.sender }}</td>
+            <td>{{ msg.receiver }}</td>
+            <td>{{ msg.text }}</td>
+            <td>{{ msg.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
